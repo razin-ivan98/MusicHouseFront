@@ -21,7 +21,7 @@ const babelOptions = (presets) => {
 module.exports = {
     context: path.resolve(__dirname, 'src'),
     mode: 'development',
-    entry: ['@babel/polyfill', './index.js'],
+    entry: ['./index.js'],
     output: {
         filename: '[name].[hash].js',
         path: path.resolve(__dirname, 'dist')
@@ -49,7 +49,7 @@ module.exports = {
                 collapseWhitespace: isProd
             }
         }),
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
     ],
     module: {
         rules: [
@@ -70,23 +70,10 @@ module.exports = {
                 }
             },
             {
-                test: /\.ts$/,
+                test: /\.tsx?$/,
+                use: 'ts-loader',
                 exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: babelOptions(['@babel/preset-typescript'])
-                }
-            }, 
-            {
-                test: /\.tsx$/,
-                exclude: /node_modules/,
-                use: [
-                    {
-                        loader: 'babel-loader',
-                        options: babelOptions(['@babel/preset-typescript', '@babel/preset-react'])
-                    }
-                ]
-            }
+            },
         ]
     }
 }

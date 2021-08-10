@@ -1,8 +1,8 @@
 import ReactDOM from 'react-dom'
 import {App} from '@components/App'
 
-const container = document.getElementById('root')
+require('@babel/polyfill')
 
-console.log(App, container);
+const container = document.getElementById('root')
 
 ReactDOM.render(App(), container)
