@@ -1,14 +1,13 @@
 import * as React from "react"
 import { CLFlex, CLFlexItem } from "../CLFlex/CLFlex"
 import { CLIcon, CLIconType } from "../CLIcon/CLIcon"
-
 import { ColorVariant, Size } from "../consts"
 import { Wrapper } from "./CLButton.styled"
 
 interface Props {
     size?: Size
     variant?: ColorVariant
-    onClick?: () => void
+    onClick?: (e: React.SyntheticEvent) => void
     iconLeft?: CLIconType
     iconRight?: CLIconType
     children?: any,
@@ -26,12 +25,18 @@ export const CLButton: React.FC<Props> = (props) => {
         iconRight
     } = props
 
+    const clickHandler = (e: React.SyntheticEvent) => {
+        e.stopPropagation()
+        onClick?.(e)
+    }
+
     if (!children && !iconRight) {
         return <Wrapper 
             variant={variant}
             size={size}
             width={width}
-            onClick={onClick}
+            onClick={clickHandler}
+            smallPadding
         >
             <CLIcon type={iconLeft} variant={variant} size={size} />
         </Wrapper>

@@ -5,6 +5,7 @@ interface Props {
     variant: ColorVariant,
     size: Size
     width?: "full" | "auto" | number
+    smallPadding?: boolean
 }
 
 const buttonSizes: Record<Size, {height: string, fontSize: string}> = {
@@ -14,7 +15,7 @@ const buttonSizes: Record<Size, {height: string, fontSize: string}> = {
 }
 
 export const Wrapper = styled.button<Props>`
-    background-color: ${({variant}) => Colors[variant].common};
+    background-color: ${({variant}) => Colors[variant].common ? Colors[variant].common : "unset"};
     color: ${({variant}) => Colors[variant].inner};
     height: ${({size}) => buttonSizes[size].height};
     font-size: ${({size}) => buttonSizes[size].fontSize};
@@ -27,5 +28,13 @@ export const Wrapper = styled.button<Props>`
         else if (!width || width === "auto") return "unset"
         else return width + "px"
     }};
-    padding: 0 1em;
+    padding: 0 ${({smallPadding}) => smallPadding ? "0.5em" : "1em"};
+    &:hover {
+        background: ${({variant}) => Colors[variant].hovered};
+        cursor: pointer;
+    };
+    &:active {
+        box-shadow: 0 0 3px rgba(0,0,0,0.3);
+        cursor: pointer;
+    };
 `

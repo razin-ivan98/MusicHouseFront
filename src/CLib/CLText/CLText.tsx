@@ -8,7 +8,7 @@ const textSizes: Record<Size, {height: string, fontSize: string}> = {
     small: {height: "24px", fontSize: "12px"}
 }
 
-const Wrapper = styled.span<Props>`
+const Wrapper = styled.div<Props>`
     color: gray;
     font-family: Arial;
     font-size: ${({size}) => textSizes[size].fontSize};

@@ -9,12 +9,25 @@ const flexJustify: Record<JustifyTypes, string> = {
     around: "space-around",
     center: "center"
 }
+const flexAlign: Record<AlignTypes, string> = {
+    start: "flex-start",
+    end: "flex-end",
+    center: "center",
+    stretch: "stretch"
+}
+
+const marginTypes: Record<Size, string> = {
+    small: "3px",
+    medium: "10px",
+    large: "20px"
+}
 
 const Wrapper = styled.div<Props>`
     justify-content: ${({justify}) => flexJustify[justify]};
+    align-items: ${({alignItems}) => flexAlign[alignItems]};
     display: flex;
     flex-direction: ${({direction}) => direction};
-    overflow: hidden;
+
     ${
         ({width, direction}) => {
             if (direction === "column" && width === "full") {
@@ -28,7 +41,7 @@ const Wrapper = styled.div<Props>`
         margin: 0;
     }
     & > * {
-        ${({direction}) => direction === "column" ? "margin-bottom: 1rem" : "margin-right: 1rem"};
+        ${({direction, margin}) => direction === "column" ? "margin-bottom: " + marginTypes[margin] : "margin-right: " + marginTypes[margin]};
     };
 `
 
@@ -38,11 +51,13 @@ const ItemWrapper = styled.div<ItemProps>`
 `
 
 type JustifyTypes = "start" | "end" | "between" | "around" | "center"
+type AlignTypes = "start" | "end" | "center" | "stretch"
 
 interface Props {
-    direction?: "column" | "row",
-    width?: "auto" | "full",
+    direction?: "column" | "row"
+    width?: "auto" | "full"
     justify?: JustifyTypes
+    alignItems?: AlignTypes
     margin?: Size
 }
 

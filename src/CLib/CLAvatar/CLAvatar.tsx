@@ -2,7 +2,7 @@ import * as React from "react"
 import { ColorVariant } from "../consts"
 import { CLImage } from "../CLImage/CLImage"
 
-type BorderTypes = "circle" | "square"
+export type BorderTypes = "circle" | "square"
 
 interface Props {
     size?: number
@@ -29,7 +29,7 @@ export const CLAvatar: React.FC<Props> = (props) => {
         src={src}
         borderRadius={borderVariants[borderVariant]}
         borderColorVariant={borderColorVariant}
-        borderWidth={5}
+        borderWidth={borderColorVariant && 5}
         width={size}
         height={size}
         fit="cover"

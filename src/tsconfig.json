@@ -1,5 +1,10 @@
 {
-    "include": ["./*", "./custom.d.ts"],
+    // "include": ["./*", "./custom.d.ts"],
+    // "exclude": [
+    //     "./plugins/**/*",
+    //     "./typings/**/*",
+    //     "./dist/**/*" // This is what fixed it!
+    // ],
     "compilerOptions": {
         "noImplicitAny": true,
         "module": "es6",

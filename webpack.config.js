@@ -10,6 +10,7 @@ const babelOptions = (presets) => {
     opts = {
         presets: [
             '@babel/preset-env',
+            '@babel/preset-react',
         ]
     }
     if (presets) {
