@@ -2,12 +2,12 @@ import * as React from "react"
 import { CLFlex, CLFlexItem } from "../CLFlex/CLFlex"
 import { CLIcon, CLIconType } from "../CLIcon/CLIcon"
 
-import {ColorVariant, Size} from "../consts"
-import { IconDummy, Wrapper } from "./CLButton.styled"
+import { ColorVariant, Size } from "../consts"
+import { Wrapper } from "./CLButton.styled"
 
 interface Props {
-    size: Size
-    variant: ColorVariant
+    size?: Size
+    variant?: ColorVariant
     onClick?: () => void
     iconLeft?: CLIconType
     iconRight?: CLIconType
@@ -16,19 +16,43 @@ interface Props {
 }
 
 export const CLButton: React.FC<Props> = (props) => {
-    return <Wrapper variant={props.variant} size={props.size} width={props.width}>
+    const {
+        variant = "primary",
+        size = "medium",
+        width,
+        onClick,
+        children,
+        iconLeft,
+        iconRight
+    } = props
+
+    if (!children && !iconRight) {
+        return <Wrapper 
+            variant={variant}
+            size={size}
+            width={width}
+            onClick={onClick}
+        >
+            <CLIcon type={iconLeft} variant={variant} size={size} />
+        </Wrapper>
+    }
+
+    return <Wrapper 
+        variant={variant}
+        size={size}
+        width={width}
+        onClick={onClick}
+    >
         <CLFlex>
-            {props.iconLeft && <CLFlexItem noGrow noShrink>
-                <CLIcon type={props.iconLeft} variant={props.variant} size={props.size} />
+            {iconLeft && <CLFlexItem noGrow noShrink>
+                <CLIcon type={iconLeft} variant={variant} size={size} />
             </CLFlexItem>}
             <CLFlexItem>
-                {props.children}
+                {children}
             </CLFlexItem>
-            {props.iconRight && <CLFlexItem  noGrow noShrink>
-                <CLIcon type={props.iconRight} variant={props.variant} size={props.size} />
+            {iconRight && <CLFlexItem noGrow noShrink>
+                <CLIcon type={iconRight} variant={variant} size={size} />
             </CLFlexItem>}
         </CLFlex>
     </Wrapper>
 }
-
-<CLIcon size="large" variant="primary" />

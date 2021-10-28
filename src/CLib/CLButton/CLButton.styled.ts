@@ -19,7 +19,7 @@ export const Wrapper = styled.button<Props>`
     height: ${({size}) => buttonSizes[size].height};
     font-size: ${({size}) => buttonSizes[size].fontSize};
     border: none;
-    border-radius: 7px;
+    border-radius: 5px;
     font-family: Arial;
     font-weight: bold;
     width: ${({width}) => {
@@ -28,10 +28,4 @@ export const Wrapper = styled.button<Props>`
         else return width + "px"
     }};
     padding: 0 1em;
-    margin-bottom: 10px;
-`
-
-export const IconDummy = styled.div<Pick<Props, "size">>`
-    height: ${({size}) => buttonSizes[size].fontSize};
-    width: ${({size}) => buttonSizes[size].fontSize};
 `
