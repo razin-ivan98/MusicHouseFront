@@ -81,7 +81,7 @@ export const CLProgressBar: React.FC<Props> = (props) => {
             return
         }
  
-        const newValue = (e.clientX - element.left) / (element.right - element.left) * 100
+        const newValue = (e.clientX - element.left) / (element.right - element.left) * max
         if (newValue < min || newValue > max) {
             return
         }
@@ -96,14 +96,28 @@ export const CLProgressBar: React.FC<Props> = (props) => {
         if (!element) {
             return
         }
-        const newValue = (e.clientX - element.left) / (element.right - element.left) * 100
+        const newValue = (e.clientX - element.left) / (element.right - element.left) * max
+        if (newValue < min || newValue > max) {
+            return
+        }
+        onChange(newValue);
+    }
+    const handleTouchMove = (e: React.TouchEvent) => {
+        if (!mousePressed || !onChange) {
+            return
+        }
+        const element = barRef.current?.getBoundingClientRect();
+        if (!element) {
+            return
+        }
+        const newValue = (e.touches[0].clientX - element.left) / (element.right - element.left) * max
         if (newValue < min || newValue > max) {
             return
         }
         onChange(newValue);
     }
 
-    const progress = (value - min) / (max - min) * 100
+    const progress = (value - min) / (max - min) * 100 || 0
 
     return <Wrapper
         width={width}
@@ -115,6 +129,9 @@ export const CLProgressBar: React.FC<Props> = (props) => {
         onMouseDown={handleMouseDown}
         onMouseLeave={handleMouseUp}
         onMouseUp={handleMouseUp}
+        onTouchStart={handleMouseDown}
+        onTouchEnd={handleMouseUp}
+        onTouchMove={handleTouchMove}
     >
         <Progress width={progress} colorVariant={colorVariant} height={height} />
         {withMarker && <Marker size={height} colorVariant={colorVariant} progress={progress}/>}

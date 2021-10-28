@@ -33,14 +33,16 @@ export const CLEntityCard: React.FC<Props> = (props) => {
 
     return <Wrapper width={width} onClick={handleClick}>
         <CLFlex margin="large" alignItems="center">
-            <CLAvatar size={50} src={avatarLink} borderVariant={avatarVariant} />
+            <CLFlexItem noGrow noShrink>
+                <CLAvatar size={40} src={avatarLink} borderVariant={avatarVariant} />
+            </CLFlexItem>
             <CLFlexItem noShrink>
                 <CLFlex direction="column" margin="small">
-                    <CLText size="large">{mainTitle}</CLText>
-                    <CLText size="medium">{subTitle}</CLText>
+                    <CLText size="medium">{mainTitle}</CLText>
+                    <CLText size="small">{subTitle}</CLText>
                 </CLFlex>
             </CLFlexItem>
-            <CLFlexItem noGrow>
+            <CLFlexItem noGrow noShrink>
                 {actionsElement}
             </CLFlexItem>
         </CLFlex>

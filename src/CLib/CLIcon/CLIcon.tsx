@@ -1,15 +1,11 @@
 import * as React from "react"
-
 import { ColorVariant, Size } from "../consts"
-
 import { FontAwesomeIcon,  } from '@fortawesome/react-fontawesome'
-
-import { faPlay, faSignOutAlt, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { CLIconWrapper } from "./CLIcon.styled"
 
 require("./utils")
 
-export type CLIconType = "delete" | "edit" | "ban" | "ok" | "cat" | "play" | "signOut" | "plus"
+export type CLIconType = "delete" | "edit" | "ban" | "ok" | "cat" | "play" | "signOut" | "plus" | "pause"
 
 const types: Record<CLIconType, any> = {
     delete: "trash",
@@ -19,7 +15,8 @@ const types: Record<CLIconType, any> = {
     cat: "cat",
     plus: "plus",
     play: "play",
-    signOut: "sign-out-alt"
+    signOut: "sign-out-alt",
+    pause: "pause"
 }
 
 interface Props {

@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { CLAudio } from '../../CLib/CLAudio/CLAudio'
 import { CLAvatar } from '../../CLib/CLAvatar/CLAvatar'
 
 import { CLButton } from '../../CLib/CLButton/CLButton'
@@ -15,13 +16,13 @@ import { AppWrapper } from "./App.styled"
 export const App: React.FC = () => {
     const actions = () => {
         return <React.Fragment>
-            <CLButton variant="transparent" size="large" iconLeft="delete" onClick={() => console.log("Button")}></CLButton>
-            <CLButton variant="transparent" size="large" iconLeft="edit" onClick={() => console.log("Button")}></CLButton>
+            <CLButton variant="transparent" size="medium" iconLeft="delete" onClick={() => console.log("Button")}></CLButton>
+            <CLButton variant="transparent" size="medium" iconLeft="edit" onClick={() => console.log("Button")}></CLButton>
         </React.Fragment>
     }
     const actions1 = () => {
         return <React.Fragment>
-            <CLButton variant="transparent" size="large" iconLeft="plus" onClick={() => console.log("Button")}></CLButton>
+            <CLButton variant="transparent" size="medium" iconLeft="plus" onClick={() => console.log("Button")}></CLButton>
         </React.Fragment>
     }
 
@@ -56,10 +57,10 @@ export const App: React.FC = () => {
                         borderVariant="square"
                     />
                     
-                </CLFlex>
-            </CLCard>
-            <CLCard width={500}>
-                <CLFlex direction="column" width="auto">
+                {/* </CLFlex> */}
+            {/* </CLCard> */}
+            {/* <CLCard width={500}> */}
+                {/* <CLFlex direction="column" width="auto"> */}
                     <CLSkeleton loading={true} />
                     <CLEntityCard
                         avatarLink="https://cdn.fishki.net/upload/post/2019/08/24/3066538/98b54cf122f068003e4f2f3b0ec244ca.jpg"
@@ -79,7 +80,7 @@ export const App: React.FC = () => {
                     А этот можно менять
                     <CLProgressBar value={progressValue} onChange={changeProgressValue} height={10} />
                     <CLProgressBar value={progressValue} onChange={changeProgressValue} height={10} withMarker />
-
+                    <CLAudio src="https://cdns-preview-d.dzcdn.net/stream/c-deda7fa9316d9e9e880d2c6207e92260-8.mp3" variant="success" />
                 </CLFlex>
             </CLCard>
         </CLFlex>
