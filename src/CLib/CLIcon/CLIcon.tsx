@@ -5,7 +5,7 @@ import { CLIconWrapper } from "./CLIcon.styled"
 
 require("./utils")
 
-export type CLIconType = "delete" | "edit" | "ban" | "ok" | "cat" | "play" | "signOut" | "plus" | "pause"
+export type CLIconType = "delete" | "edit" | "ban" | "ok" | "cat" | "play" | "signOut" | "plus" | "pause" | "close"
 
 const types: Record<CLIconType, any> = {
     delete: "trash",
@@ -16,7 +16,8 @@ const types: Record<CLIconType, any> = {
     plus: "plus",
     play: "play",
     signOut: "sign-out-alt",
-    pause: "pause"
+    pause: "pause",
+    close: "times"
 }
 
 interface Props {

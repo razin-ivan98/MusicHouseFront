@@ -30,9 +30,7 @@ const Wrapper = styled.div<Props>`
 
     ${
         ({width, direction}) => {
-            if (direction === "column" && width === "full") {
-                return "height: 100%;"
-            } else if (direction === "row" && width === "full") {
+            if (direction === "row" && width === "full") {
                 return "width: 100%;"
             }
         }
